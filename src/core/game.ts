@@ -23,7 +23,8 @@ export class Game {
 
     const jobs = this.world.totalJobs();
     const employed = Math.min(this.state.population, jobs);
-    const taxIncome = this.economy.calculateTaxIncome(this.state.population, employed, this.state.taxes);
+    const effectiveJobs = employed * coverage;
+    const taxIncome = this.economy.calculateTaxIncome(this.state.population, effectiveJobs, this.state.taxes);
     const upkeep = this.economy.calculateUpkeep(this.world.allBuildings());
     const loanPayment = this.state.loans ? this.state.loans.paymentPerDay : 0;
     const newBalance = this.economy.applyDay(this.state.balance, taxIncome, upkeep, loanPayment);
