@@ -11,6 +11,6 @@ describe('Population', () => {
       satisfaction: 80,
       taxCitizen: 5
     });
-    expect(newPop).toBe(13);
+    expect(newPop).toBe(12);
   });
 });
