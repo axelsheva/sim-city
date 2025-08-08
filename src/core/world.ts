@@ -1,4 +1,10 @@
-import { Building, EnergyConsumer, PowerPlant } from './types';
+import {
+  Building,
+  EnergyConsumer,
+  PowerPlant,
+  Residential,
+  Industrial
+} from './types';
 
 export class World {
   width: number;
@@ -18,19 +24,23 @@ export class World {
     this.buildings.set(this.coord(x, y), building);
   }
 
+  getBuilding(x: number, y: number): Building | undefined {
+    return this.buildings.get(this.coord(x, y));
+  }
+
   allBuildings(): Building[] {
     return Array.from(this.buildings.values());
   }
 
   residentialCapacity(): number {
     return this.allBuildings()
-      .filter((b): b is any => b.type === 'Residential')
+      .filter((b): b is Residential => b.type === 'Residential')
       .reduce((sum, b) => sum + b.capacity, 0);
   }
 
   totalJobs(): number {
     return this.allBuildings()
-      .filter((b): b is any => b.type === 'Industrial')
+      .filter((b): b is Industrial => b.type === 'Industrial')
       .reduce((sum, b) => sum + b.jobs, 0);
   }
 
