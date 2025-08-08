@@ -24,6 +24,10 @@ export class World {
     this.buildings.set(this.coord(x, y), building);
   }
 
+  removeBuilding(x: number, y: number) {
+    this.buildings.delete(this.coord(x, y));
+  }
+
   getBuilding(x: number, y: number): Building | undefined {
     return this.buildings.get(this.coord(x, y));
   }
