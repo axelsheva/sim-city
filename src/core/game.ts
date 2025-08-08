@@ -26,7 +26,15 @@ export class Game {
     const effectiveJobs = employed * coverage;
     const taxIncome = this.economy.calculateTaxIncome(this.state.population, effectiveJobs, this.state.taxes);
     const upkeep = this.economy.calculateUpkeep(this.world.allBuildings());
-    const loanPayment = this.state.loans ? this.state.loans.paymentPerDay : 0;
+
+    let loanPayment = 0;
+    let loan = this.state.loans;
+    if (loan) {
+      loanPayment = loan.processDay();
+      if (loan.outstanding <= 0) {
+        loan = null;
+      }
+    }
     const newBalance = this.economy.applyDay(this.state.balance, taxIncome, upkeep, loanPayment);
 
     const newPopulation = this.population.nextDay({
@@ -41,7 +49,8 @@ export class Game {
       ...this.state,
       day: this.state.day + 1,
       balance: newBalance,
-      population: newPopulation
+      population: newPopulation,
+      loans: loan
     };
   }
 }
