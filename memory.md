@@ -17,3 +17,4 @@
 - `balance' = balance + taxIncome - upkeep - loanPayment`
 - `population' = clamp(population + round((satisfaction - 50)/10) - (round(unemployment/10) + round(taxCitizen/10)), 0, residentialCapacity)`
 - `Loan`: `paymentPerDay` (annuity) for principal, rateAPR, termDays.
+- Loan daily interest: `interest = outstanding * rateAPR / 365`; loan processed each game day and cleared when fully paid.

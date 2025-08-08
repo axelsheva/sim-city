@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { Game } from './game';
 import { World } from './world';
 import { Building } from './types';
+import { Loan } from './loan';
 
 const initialState = {
   day: 0,
@@ -52,5 +53,15 @@ describe('Game', () => {
     const game = new Game({ ...initialState, balance: 0, population: 10 }, world);
     game.tick();
     expect(game.state.balance).toBe(15);
+  });
+
+  it('processes loan payment each day', () => {
+    const loan = new Loan(1000, 0.1, 10);
+    const state = { ...initialState, balance: 1000, population: 0, loans: loan };
+    const game = new Game(state, new World());
+    const payment = loan.paymentPerDay;
+    game.tick();
+    expect(game.state.balance).toBeCloseTo(1000 - payment);
+    expect(game.state.loans?.outstanding).toBeLessThan(1000);
   });
 });
