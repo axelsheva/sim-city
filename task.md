@@ -155,8 +155,8 @@ interface PowerPlant extends BuildingBase {
 - [x] Vite + TS + React, базовая структура, ESLint/Prettier.
 - [x] Состояние игры (`Game`, `World`, `CityState`), ивенты.
 - [x] Рендер сетки 20×20.
-- [ ] Выбор клетки, размещение `Road`.
-- [ ] Панель инструментов (выбор типа постройки), undo/redo (простой стек).
+ - [x] Выбор клетки, размещение `Road`.
+ - [ ] Панель инструментов (выбор типа постройки), undo/redo (простой стек).
 
 ### Этап B — Здания и экономика (2–3 дня)
 - [x] Типы зданий: `Residential`, `Industrial`, `PowerPlant`.
