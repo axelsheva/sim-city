@@ -17,3 +17,7 @@ body {
   stroke: var(--grid-line);
   stroke-width: 1;
 }
+
+.grid image {
+  image-rendering: pixelated;
+}
