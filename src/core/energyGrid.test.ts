@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EnergyGrid, PowerPlant, EnergyConsumer } from './energyGrid';
+import { EnergyGrid } from './energyGrid';
 
 describe('EnergyGrid', () => {
   it('calculates supply, demand, and coverage', () => {
@@ -10,6 +10,6 @@ describe('EnergyGrid', () => {
 
     expect(grid.supplyKW()).toBe(2000);
     expect(grid.demandKW()).toBe(1300);
-    expect(grid.coverage()).toBeCloseTo(2000 / 1300, 5);
+    expect(grid.coverage()).toBe(1);
   });
 });

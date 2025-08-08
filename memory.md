@@ -15,5 +15,5 @@
 - `taxIncome = population * taxCitizen + totalJobsFilled * taxIndustry`
 - `upkeep = sum(building.upkeepPerDay)`
 - `balance' = balance + taxIncome - upkeep - loanPayment`
-- `population' = clamp(population + f(satisfaction) - g(unemployment, highTaxes), 0, residentialCapacity)`
+- `population' = clamp(population + round((satisfaction - 50)/10) - (round(unemployment/10) + round(taxCitizen/10)), 0, residentialCapacity)`
 - `Loan`: `paymentPerDay` (annuity) for principal, rateAPR, termDays.
